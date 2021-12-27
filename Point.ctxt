@@ -1,0 +1,32 @@
+#BlueJ class context
+comment0.target=Point
+comment0.text=\r\n\ The\ Goal\ from\ this\ Class\ to\ store\ the\ location\ of\ the\ robot\ and\ the\ obstacles\ in\ the\ coordinate\ System\r\n
+comment1.params=
+comment1.target=Point()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Punkt\r\n
+comment10.params=g
+comment10.target=void\ draw(java.awt.Graphics)
+comment10.text=\r\n\ Draw\ the\ Points.\r\n
+comment2.params=x\ y
+comment2.target=Point(int,\ int)
+comment2.text=\r\n\ Second\ constructor\r\n\ When\ a\ Java\ class\ contains\ multiple\ constructors,\ we\ say\ that\ the\ constructor\r\n\ is\ overloaded.\r\n\ @this\ in\ front\ of\ the\ field\ name\ (this.number)\ is\ not\ necessary.\r\n\ It\ just\ signals\ to\ the\ compiler\ that\ it\ is\ the\ field\ named\ number\ that\ is\ being\r\n\ referred\ to.\ This\ explained\ in\ more\ detail\ in\ the\ section\ about\ constructor\ parameters.\r\n
+comment3.params=
+comment3.target=int\ getX()
+comment3.text=\ \r\n\ Methods\ to\ read\ the\ Attributs\r\n
+comment4.params=
+comment4.target=int\ getY()
+comment5.params=x
+comment5.target=void\ setX(int)
+comment5.text=\ \r\n\ Methods\ to\ Change\ Attributs\r\n
+comment6.params=y
+comment6.target=void\ setY(int)
+comment7.params=
+comment7.target=void\ outputAttributes()
+comment7.text=\r\n\ Give\ the\ outputs\ coordinates\ of\ the\ current\ point\ on\ the\ console.\r\n\ only\ Strings\ Can\ be\ Printed.\r\n
+comment8.params=dx\ dy
+comment8.target=void\ moveAround(int,\ int)
+comment8.text=\r\n\ Method\ move\ around\ \r\n
+comment9.params=differentPoint
+comment9.target=double\ giveDistance(Point)
+comment9.text=\r\n\ Method\ for\ calculating\ the\ Distance\ between\ two\ points.\r\n\ There\ are\ many\ Different\ methods\ to\ calculate\ the\ Distance.\r\n\ Simply\ return\ Math.sqrt((y2\ -\ y1)\ *\ (y2\ -\ y1)\ +\ (x2\ -\ x1)\ *\ (x2\ -\ x1));\r\n\ @abs\ \=\ absolute\ value\r\n
+numComments=11

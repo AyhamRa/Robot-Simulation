@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Canvas
+comment0.text=\r\n\ In\ this\ Class\ we\ will\ drawing\ the\ obstacles,\ Robot\ and\ Points\ in\ Grafics\r\n
+comment1.params=length\ width\ background
+comment1.target=Canvas(int,\ int,\ java.awt.Color)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Canvas\r\n\ @private\ Contstructor\ because\ we\ want\ to\ use\ the\ "Singleton\ Pattern",\ Which\ allow\ to\ Creat\ only\ one\ Object.\r\n\ Every\ Object\ is\ Unique\ even\ if\ 2\ Objects\ having\ the\ same\ Parameters,\ That's\ why\ we\ need\ Singleton\ Pattern.\r\n
+comment2.params=
+comment2.target=Canvas\ getInstance()
+comment2.text=\r\n\ The\ Static\ Method\ help\ to\ isnstance\ the\ Only\ Object.\ \r\n\ @if\ Statment\ required\ because\ we\ need\ only\ one\ Object\ so\ he\ will\ check,\ if\ it's\ null,\ then\ he\ well\ creat\ it\ and\ return\ it\ and\ if\ not\r\n\ just\ return\ it.\r\n\ @Parameters\ I\ change\ the\ Attributs\ from\ Class\ "Spielfeld"\ to\ public\ and\ Static\ to\ be\ able\ to\ use\ it\ here,\ of\ course\ this\ work\ only\r\n\ if\ the\ Variable\ a\ Constant&\ Static\ Variable\r\n
+comment3.params=millisekunden
+comment3.target=void\ waite(int)
+comment3.text=\r\n\ Wait\ for\ a\ specified\ number\ of\ milliseconds\ before\ finishing\ This\ provides\ an\ easy\ way\ to\ specify\r\n\ a\ small\ delay\ which\ can\ be\ used\ when\ producing\ animations.\r\n\ @param\ \ milliseconds\ \ the\ number\ \r\n
+comment4.params=
+comment4.target=void\ update()
+comment4.text=\r\n\ Method\ to\ repaint\ and\ wait\ in\ the\ same\ Time,\ just\ to\ make\ it\ easy\ instead\ of\ calling\ 2\ Methods\r\n
+comment5.params=obstacles\ roboter\ punkte
+comment5.target=void\ zeichnen(java.util.ArrayList,\ Robot,\ Point[])
+comment5.text=\r\n\ The\ canvas\ is\ recreated,\ the\ ArrayList\ with\ the\ obstructions\ is\ passed\ to\ the\ canvas,\r\n\ and\ the\ window\ is\ redisplayed.\r\n\ Draw\ the\ Obstcales,Robot\ and\ The\ Points\ to.\r\n
+comment6.params=
+comment6.target=void\ repaint()
+comment6.text=\r\n\ repaint\ need\ it\ when\ the\ Robot\ will\ move.\r\n
+numComments=7
