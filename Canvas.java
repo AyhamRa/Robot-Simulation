@@ -12,10 +12,10 @@ import java.util.ArrayList;
    
    private static Canvas instance;
    JFrame window;
-   private DrawingArea zeichenflaeche;
+   private DrawingArea drawingArea;
    private int width;
    private int length;
-   private Color hintergrundfarbe;
+   private Color background;
    ArrayList<Rectangle> obstacles;
    
     /**
@@ -28,7 +28,7 @@ import java.util.ArrayList;
        window = new JFrame();
        this.length = length;
        this.width = width;
-       this.hintergrundfarbe =  background;  // the Backgroung Color
+       this.background =  background;  // the Backgroung Color
        obstacles = new ArrayList<>();   // givieng the obstacles a value
        window.setSize(length ,width);
        window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // to close the Window
@@ -48,7 +48,7 @@ import java.util.ArrayList;
     */
    public static Canvas getInstance(){
         if (instance == null){
-              instance = new Canvas(PlayingField.LANG,PlayingField.BREIT,Color.WHITE);
+              instance = new Canvas(PlayingField.LONG,PlayingField.WIDE,Color.WHITE);
         }
         return instance;
     }
@@ -83,12 +83,12 @@ import java.util.ArrayList;
    * and the window is redisplayed.
    * Draw the Obstcales,Robot and The Points to.
    */
-   public void zeichnen(ArrayList<Rectangle> obstacles,Robot roboter, Point[] punkte){
+   public void draw(ArrayList<Rectangle> obstacles,Robot robot, Point[] points){
       // Recreate drawing area.
-      zeichenflaeche = new DrawingArea(obstacles,roboter,punkte);
-      zeichenflaeche.setBackground(hintergrundfarbe);
+      drawingArea = new DrawingArea(obstacles,robot,points);
+      drawingArea.setBackground(background);
       window.getContentPane().removeAll();            // Show new window.
-      window.add(zeichenflaeche);
+      window.add(drawingArea);
       window.setVisible(true);                        // let the Window come Visible
 
       }
@@ -97,7 +97,7 @@ import java.util.ArrayList;
     * repaint need it when the Robot will move.
     */
    public void repaint(){
-      zeichenflaeche.repaint();
+      drawingArea.repaint();
     }
 }
 

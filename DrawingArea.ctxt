@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=DrawingArea
 comment0.text=\r\n\ Class\ Zeichenflaeche\ als\ subClass\ to\ JPanel\ witch\ need\ the\ Keywoerd\ "extends"\r\n\ We\ will\ be\ ables\ to\ use\ the\ Methods\ from\ the\ SuperClass\ "JPanel"\ like\ paintComponent()\r\n
-comment1.params=obstacles\ roboter\ punkte
+comment1.params=obstacles\ robot\ points
 comment1.target=DrawingArea(java.util.ArrayList,\ Robot,\ Point[])
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Zeichenflaeche\r\n
 comment2.params=g

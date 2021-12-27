@@ -36,7 +36,7 @@ public class Robot extends Circle
     // using contains if you want to compare a word with whole sentence.
     // @nextLine because I store a whole sentence, @next if i want to store just a word.
     // @toUpperCase will transform any word in the Input to Capital letters.
-     public void spracherkennung(){
+     public void speechRecognition(){
         KeyWord kw;
         System.out.println("Ask me a Question");
         Scanner scanner= new Scanner(System.in); // read the Input form the user
@@ -89,8 +89,8 @@ public class Robot extends Circle
      /**
      * If the Robot at the Edge of our Panle then "return" true and "false" otherwise.
      */
-      public boolean anWand(int WandX, int WandY){
-      if ( getPosition().getX() >= WandX-getDiameter() || getPosition().getY() >= WandY-getDiameter()){
+      public boolean onWall(int WallX, int WallY){
+      if(getPosition().getX() >= WallX-getDiameter() || getPosition().getY() >= WallY-getDiameter()){
           return true;
         }
           else
@@ -102,8 +102,8 @@ public class Robot extends Circle
       * @betweenObstcalsEdge_Y() is Down declare it 
       */
      public boolean canMoveRight(int step, ArrayList<Rectangle> obstacles){
-       for (Rectangle rechteck : obstacles) {
-         if (getPosition().getX()+getDiameter() + step > rechteck.getPosition().getX() && betweenObstcalsEdge_Y(rechteck) && getPosition().getX() < rechteck.getPosition().getX() ){
+       for (Rectangle rectangle : obstacles) {
+         if (getPosition().getX()+getDiameter() + step > rectangle.getPosition().getX() && betweenObstcalsEdge_Y(rectangle) && getPosition().getX() < rectangle.getPosition().getX() ){
            return false;
          }
                
@@ -117,8 +117,8 @@ public class Robot extends Circle
     * @betweenObstcalsEdge_X() is Down declare it 
     */
     public boolean canMoveDown(int step, ArrayList<Rectangle> obstacles){
-       for (Rectangle rechteck : obstacles ){
-         if (getPosition().getY()+getDiameter() + step > rechteck.getPosition().getY() && betweenObstcalsEdge_X(rechteck) && getPosition().getY() < rechteck.getPosition().getY()){
+       for (Rectangle rectangle : obstacles ){
+         if (getPosition().getY()+getDiameter() + step > rectangle.getPosition().getY() && betweenObstcalsEdge_X(rectangle) && getPosition().getY() < rectangle.getPosition().getY()){
             return false;
          }
         
@@ -129,8 +129,8 @@ public class Robot extends Circle
     /**
     * Check if the Robot is bewtween Obstcal Edge of the Y-Achse
     */
-    public boolean betweenObstcalsEdge_Y(Rectangle rechteck){
-     if (getPosition().getY() >= rechteck.getPosition().getY() + rechteck.getLaenge() || getPosition().getY()+ getDiameter() <= rechteck.getPosition().getY()){
+    public boolean betweenObstcalsEdge_Y(Rectangle rectangle){
+     if (getPosition().getY() >= rectangle.getPosition().getY() + rectangle.getLength() || getPosition().getY()+ getDiameter() <= rectangle.getPosition().getY()){
         return false;
         }
         return true;
@@ -138,8 +138,8 @@ public class Robot extends Circle
     /**
      * Check if the Robot is bewtween Obstcal Edge of the X-Achse
      */
-    public boolean betweenObstcalsEdge_X(Rectangle rechteck){
-      if (getPosition().getX() >= rechteck.getPosition().getX() + rechteck.getBreite() || getPosition().getX()+ getDiameter() <= rechteck.getPosition().getX()){
+    public boolean betweenObstcalsEdge_X(Rectangle rectangle){
+      if (getPosition().getX() >= rectangle.getPosition().getX() + rectangle.getWidth() || getPosition().getX()+ getDiameter() <= rectangle.getPosition().getX()){
         return false;
         }
         return true;
@@ -180,7 +180,7 @@ public class Robot extends Circle
                 notReached = false;
             }
             
-            bewegeUm(dx, dy);
+            moveAround(dx, dy);
             canvas.update(); 
         }
     }
@@ -190,14 +190,14 @@ public class Robot extends Circle
      */
     public void reset(){
      setPosition(0,0);          
-     setFarbe(Color.ORANGE);    
+     setColor(Color.ORANGE);    
     }
     
     /**
-     * Drawing the Robot and just callthe method in Class "Leinwand"
+     * Drawing the Robot and just call the method in Class "Leinwand"
      */
-    public void zeichnen(Graphics g){
-    g.setColor(getFarbe());
+    public void draw(Graphics g){
+    g.setColor(getColor());
     g.fillOval(getPosition().getX() ,getPosition().getY() ,getDiameter() ,getDiameter());
     }
 }

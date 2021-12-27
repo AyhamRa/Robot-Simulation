@@ -7,9 +7,9 @@ import java.awt.Graphics;
  */
 public class Rectangle extends Figur
 {
-     private int breite;
-     private int laenge;
-     private String bezeichnung;
+     private int width;
+     private int length;
+     private String description;
      
      /**
      * Constructor for objects of class Rechteck
@@ -19,17 +19,17 @@ public class Rectangle extends Figur
  
      }
 
-     /**
+    /**
       * Second Constructor
       * @if I have write equals because I combire 2 objekts.
       */
-     public Rectangle(Point position, int breite , int laenge , String bezeichnung ,
-     Color farbe){
-        super(position , farbe );
-        this.breite = breite;
-        this.laenge = laenge;
-        this.bezeichnung = bezeichnung;
-        if (farbe.equals(Color.white)){
+     public Rectangle(Point position, int width , int length , String description ,
+     Color color){
+        super(position , color );
+        this.width = width;
+        this.length = length;
+        this.description = description;
+        if (color.equals(Color.white)){
         System.out.println("Color cant't be White");
         }
         }
@@ -37,44 +37,44 @@ public class Rectangle extends Figur
     /**
      * Methods to read the Attributs
      */   
-     public int getBreite(){ 
-        return breite;
+     public int getWidth(){ 
+        return width;
         }
         
-    public int getLaenge(){
-        return laenge;
+    public int getLength(){
+        return length;
         }
        
         
-    public String getBezeichnung(){
-        return bezeichnung;
+    public String getDescription(){
+        return description;
         }   
      
     /**
     * Methods to Change the Attributs
     */   
-    public void setBreite(int breite){
-        this.breite = breite;
+    public void setWidth(int width){
+        this.width = width;
         }   
         
-    public void setLaenge(int laenge){
-        this.laenge = laenge;
+    public void setLength(int length){
+        this.length = length;
         }   
  
         
-    public void setBezeichnung(String bezeichnung){
-        this.bezeichnung = bezeichnung;
+    public void setDescription(String description){
+        this.description = description;
         } 
 
     /**
      * You can't change the type of objekt to another in the nomal way, here
      * i call the Method from class Punkt. It's do the work
      */
-    public void ausgabeAttribute(){
+    public void outputAttributes(){
         position.outputAttributes();
-        System.out.println("breite ="+breite+", Laenge ="+ laenge);
-        System.out.println("bezeichnung: "+bezeichnung);
-        System.out.println(farbe.toString());
+        System.out.println("width ="+width+", length ="+ length);
+        System.out.println("description: "+description);
+        System.out.println(color.toString());
     
     }
     /**
@@ -84,19 +84,19 @@ public class Rectangle extends Figur
      * @x2, @y2 the second Point came from the "Rechteck Class", that's mean it's already an object from Class "Rechteck" 
      * and need not to set the name of object before calling the Method.
      */
-    boolean ueberlappt(Rectangle r){
+    boolean overlaps(Rectangle r){
         int x1= r.getPosition().getX();  // I declare a variable so we can write Comfortable and understanding code.
         int x2= getPosition().getX();
         int y1= r.getPosition().getY();
         int y2= getPosition().getY();
             
-          // Summe the x1 with the Breite and Compare it with the x2 so we will know if x2 left or right the x1 
+          // Summe the x1 with the width and Compare it with the x2 so we will know if x2 left or right the x1 
           // first time x1 is top Right and second  time if x2 is top Right.
-          if (x1+r.getBreite() < x2 || x2+getBreite() < x1){
-          return false;
+         if (x1+r.getWidth() < x2 || x2+getWidth() < x1){
+           return false;
            }
-           // Summe the y1 with the Breite and Compare it with the y2 so we will know if y2 left or right the y1 
-              if (y1+r.getLaenge() < y2 || y2+getLaenge() < y1 ){
+           // Summe the y1 with the width and Compare it with the y2 so we will know if y2 left or right the y1 
+              if (y1+r.getLength() < y2 || y2+getLength() < y1 ){
                return false;
                }
                  else 
@@ -118,19 +118,19 @@ public class Rectangle extends Figur
     }
     
     public int maxX(){
-    return PlayingField.BREIT-breite;
+    return PlayingField.WIDE-width;
     }
     
     public int maxY(){
-    return PlayingField.LANG-laenge;
+    return PlayingField.LONG-length;
     }
     
     /** 
      * Drawing the Obstacles here and call the method in Class "Leinwand"
      */
-    public void zeichnen(Graphics g){
-    g.setColor(getFarbe());   
-    g.fillRect(getPosition().getX() ,getPosition().getY() ,getBreite(),getLaenge());
+    public void draw(Graphics g){
+    g.setColor(getColor());   
+    g.fillRect(getPosition().getX() ,getPosition().getY() ,getWidth(),getLength());
     }
  
 }

@@ -10,11 +10,11 @@ import javax.swing.*;
 public class PlayingField
 {
     //  Constante variables "final" means Constat
-    public final static int BREIT = 1000;
-    public final static int LANG = 1000;
-    private static Random zufallsgenerator = new Random();
+    public final static int WIDE = 1000;
+    public final static int LONG = 1000;
+    private static Random randomGenerator = new Random();
     int stop = 0;
-    private Robot roboter;
+    private Robot robot;
     private Canvas canvas;
     
 
@@ -24,7 +24,7 @@ public class PlayingField
      */
     public PlayingField()
     {
-       roboter = new Robot();
+       robot = new Robot();
        canvas = Canvas.getInstance(); 
     }
     
@@ -33,7 +33,7 @@ public class PlayingField
      * @Continue: The continue statement breaks one iteration (in the loop), if a specified condition occurs,
      * and continues with the next iteration in the loop.
      */
-    public Point[] punkteEingeben(){
+    public Point[] EnterPoints(){
     
     Scanner scanner= new Scanner(System.in);  // read the Input form the user
     int pointsCount;
@@ -43,46 +43,46 @@ public class PlayingField
     if (pointsCount < 2){
     System.out.println("Number of Points can't be less than 2");
     System.out.println("=====================================");
-    return punkteEingeben();
+    return EnterPoints();
                }
      }
     catch(InputMismatchException e){
         System.out.println("Please Enter only an Integer Number");
         System.out.println("=====================================");
-        return punkteEingeben();
+        return EnterPoints();
     }
     
     System.out.println("Points Number is: " + pointsCount);
     System.out.println("=====================================");
     
-    Point[] punkte= new Point[pointsCount]; //a declaration the Arry
+    Point[] points= new Point[pointsCount]; //a declaration the Arry
     
-    punkte[0] = new Point(); // The 1 Point always should be (0,0) so we call the first Constructor from 
+    points[0] = new Point(); // The 1 Point always should be (0,0) so we call the first Constructor from 
                              // Class Punkt.
     System.out.println("Point 1 is always (0,0)");
     System.out.println("=====================================");
-     for (int i=1 ; i < punkte.length; i++){
+     for (int i=1 ; i < points.length; i++){
         System.out.println("Please enter the coordinates X of the Point "+(i+1));
         try{
         int x = scanner.nextInt();  // read the Input form the user
-        if (x < 0 || x > BREIT) {
+        if (x < 0 || x > WIDE) {
         System.out.println("your input lies outside the boundaries of allowed values. Please choose a valid number from 1 to a 1000");
         i--;
         continue;
         }
         System.out.println("Please enter the coordinates Y of the Point "+(i+1));
         int y = scanner.nextInt();
-         if (y < 0 || y > LANG) {
+         if (y < 0 || y > LONG) {
         System.out.println("your input lies outside the boundaries of allowed values. Please choose a valid number from 1 to a 1000");
         i--;
         continue;
          }
-        if (x <= roboter.getDiameter() && y <= roboter.getDiameter()) {
+        if (x <= robot.getDiameter() && y <= robot.getDiameter()) {
         System.out.println("At least One of the coordinates should be greater than The Robot Radius here 50 ");
         i--;
         continue; }
-        Point punkt= new Point(x,y); // making new  object from the Second Constructor from Class Punkt
-        punkte[i]= punkt; // Storing the object punkt in the Arry
+        Point point= new Point(x,y); // making new  object from the Second Constructor from Class Punkt
+        points[i]= point; // Storing the object punkt in the Arry
         System.out.println("Point "+i+" :"+" x= "+x+ ", y = "+y);
         }  catch(InputMismatchException e){
             i--; // Why this? because he in the  normal way he will give us the Error then add 1, with this he 
@@ -91,7 +91,7 @@ public class PlayingField
             scanner= new Scanner(System.in); // without this the loop will be infinitif
         }
      }
-    return punkte; 
+    return points; 
 
     }
     
@@ -113,14 +113,14 @@ public class PlayingField
      * @contains look the method behind
      */                                                
      for (int i = 0 ; i<size-1 ; i++){
-        double minAbstand = 0; // we gave the variable here to rest the minAbstand every Time in this loop
+        double minDistance = 0; // we gave the variable here to rest the minAbstand every Time in this loop
         int index = sorted_index[i];
         for (int j=1 ; j<size ; j++){
             if(contains(sorted_index, j)) continue;
             
-            double abstand = poi[index].giveDistance(poi[j]);
-            if(abstand <= minAbstand || minAbstand == 0){
-              minAbstand = abstand;
+            double distance = poi[index].giveDistance(poi[j]);
+            if(distance <= minDistance || minDistance == 0){
+              minDistance = distance;
               sorted_index[i+1] = j; // Thats mean the min Distance will be stored in the next index.for Ex: if we have check 
                                      // the nearest Point for index 0 then the shortest Distnce are storing in index 1
             }
@@ -155,7 +155,7 @@ public class PlayingField
      * @ArrayList: If you don't know how many items are going to be held in your array then use ArrayList
      * An ArrayList is a dynamic data structure, meaning items can be added and removed from the list
      */
-      public void hindernislisteErzeugen(){
+      public void createObstacleList(){
        ArrayList<Rectangle> obstacles= new ArrayList<>(); //create a new ArrayList object
        System.out.println("How many obstacles do you want?");
        Scanner scanner= new Scanner(System.in); // read the Input form the user
@@ -165,7 +165,7 @@ public class PlayingField
          if (obstackesCount < 0){
             System.out.println("Please enter a Number greater than or equal to 0");
             System.out.println("=====================================");
-            hindernislisteErzeugen();
+            createObstacleList();
             return;
             }
         }       
@@ -173,51 +173,51 @@ public class PlayingField
             
             System.out.println("Please Enter only an Integer Number");
             System.out.println("=====================================");
-            hindernislisteErzeugen();
+            createObstacleList();
             return;   //to stop the Methode
         }
         
         // With the for loop we Generate the obstacles randomly until the Numbers of obstacles done.
         for (int i=0 ; i <obstackesCount ; i++){
-           Rectangle rechteck= new Rectangle(); // Produce an new object with type Rechteck
+           Rectangle rectangle= new Rectangle(); // Produce an new object with type Rechteck
                
               // check if there are 50 consecutive overlapping rectangles then break the loop and dont Generate anymore
-            if (stop == 50){
+           if (stop == 50){
                  break;
                 }
-           int x = zufallszahl(0,BREIT-1);  
-           int y = zufallszahl(0,LANG-1);
+           int x = randomNumber(0,WIDE-1);  
+           int y = randomNumber(0,LONG-1);
                       // Don't allow to drow Obtcalse in the Robot Radiuas at Position (0,0)
-           if ( x <= roboter.getDiameter() && y <= roboter.getDiameter()){
-              x = roboter.getDiameter()+1;  
-              y = roboter.getDiameter()+1; 
+           if ( x <= robot.getDiameter() && y <= robot.getDiameter()){
+              x = robot.getDiameter()+1;  
+              y = robot.getDiameter()+1; 
                 }  
                 
            Point poistion= new Point(x,y);   // declare the Position of each obstacles
-           rechteck.setPosition(poistion);
-           int breite= zufallszahl(1,100);
-           int laenge= zufallszahl(1,100);  // Calling the Method int zufallszahl
-           rechteck.setBreite(breite);      // Calling the Method from Class Rechteck
-           rechteck.setLaenge(laenge);      // Why set Method because it will Generate Numbers thats mean a Change Method 
-           rechteck.setBezeichnung("Rechteck " + i+1); // How many obstackes will be Produce
+           rectangle.setPosition(poistion);
+           int breite= randomNumber(1,100);
+           int laenge= randomNumber(1,100);  // Calling the Method int zufallszahl
+           rectangle.setWidth(breite);      // Calling the Method from Class Rechteck
+           rectangle.setLength(laenge);      // Why set Method because it will Generate Numbers thats mean a Change Method 
+           rectangle.setDescription("Rechteck " + i+1); // How many obstackes will be Produce
        
            // to Generate the obstacles only in the Range of the Play Field
-            if (x+breite > BREIT){
-             breite = BREIT - x;
+            if (x+breite > WIDE){
+             breite = WIDE - x;
             }
-            if (y+laenge > LANG){
-             laenge = LANG  - y;
+            if (y+laenge > LONG){
+             laenge = LONG  - y;
             }
       
-           Color color= zufallsfarbe();    // Calling the Method Color zufallszahl
-           rechteck.setFarbe(color);
+           Color color= randomColor();    // Calling the Method Color zufallszahl
+           rectangle.setColor(color);
            
            //Calling the Method ueberlappt from Class Rechteck and let each Item in Arraylist to Check if overlapping or not
            // Every obstacles is Storing in ArryList and he is a type Rechteck so i use it as Parmeters
             boolean save = true;
             for (int j=0 ; j<obstacles.size() ; j++){
               
-                   if(rechteck.ueberlappt(obstacles.get(j)) == true){
+                  if(rectangle.overlaps(obstacles.get(j)) == true){
                        save =false;
                        stop++;
                        break;
@@ -228,17 +228,17 @@ public class PlayingField
             }
        
             if(save){
-             obstacles.add(rechteck);    // Storing the rectangles in the Arraylist
+             obstacles.add(rectangle);    // Storing the rectangles in the Arraylist
             } 
          }   
-         zeichnen(obstacles, null);   //Calling the Method for Drawing the sign area with the obstacles and the Robot
-         hindernisse_umfahren(obstacles);
+         draw(obstacles, null);   //Calling the Method for Drawing the sign area with the obstacles and the Robot
+         avoidObstacles(obstacles);
        }
     
     /**
      * randomly Numbers will be Generate
      */
-     private int zufallszahl(int von, int bis){
+     private int randomNumber(int von, int bis){
        double randomNumbers = Math.random(); // Generate randomly Numbers between 0-0.99999
        randomNumbers = randomNumbers*bis; // Change the Range of our Numbers Generator 0-bis
        randomNumbers = randomNumbers+von; // Increase the Range of our Numbers Generator von-bis
@@ -250,10 +250,10 @@ public class PlayingField
      * randomly Colors will be Generate, 
      */
      //from internet web "Stackoverflow"
-     private Color zufallsfarbe(){
-      int r = zufallsgenerator.nextInt(255); // declar the 3 Basics Colors 
-      int g = zufallsgenerator.nextInt(255);
-      int b = zufallsgenerator.nextInt(255);
+     private Color randomColor(){
+      int r = randomGenerator.nextInt(255); // declar the 3 Basics Colors 
+      int g = randomGenerator.nextInt(255);
+      int b = randomGenerator.nextInt(255);
       Color randomColor = new Color(r, g, b); // Generate randomly Colors
       return randomColor;
     }
@@ -265,7 +265,7 @@ public class PlayingField
      */
      public static void main(String[] args){
         
-        PlayingField spielfeld= new PlayingField();
+        PlayingField playField= new PlayingField();
         System.out.println("1-Press A if you want to see me driving from Point to other");
         System.out.println("2-Press B if you want to see me driving around the Obstacles");
         System.out.println("3-Press C if you want to ask me Questions");
@@ -274,20 +274,20 @@ public class PlayingField
 
         for (String word = scanner.nextLine(); !word.toUpperCase().equals("END"); word = scanner.nextLine()) {
             
-           if ( word.toUpperCase().equals("END")  ){
+           if (word.toUpperCase().equals("END")  ){
                     break;
                     }
             if (word.toUpperCase().equals("A")){
-               Point[] punkte = spielfeld.punkteEingeben(); // calling the Method punkteEingeben()
-               punkte = spielfeld.poiSortieren(punkte);     // calling the Method poiSortiere()
-               spielfeld.punkte_umfahren(punkte);
+               Point[] points = playField.EnterPoints(); // calling the Method punkteEingeben()
+               points = playField.poiSortieren(points);     // calling the Method poiSortiere()
+               playField.driveAroundPoints(points);
             }
              else if (word.toUpperCase().equals("B")){
             
-            spielfeld.hindernislisteErzeugen();
+            playField.createObstacleList();
            }
             else if (word.toUpperCase().equals("C")){
-            spielfeld.roboter.spracherkennung();             // calling the Method spracherkennung()
+            playField.robot.speechRecognition();             // calling the Method spracherkennung()
                         }
           System.out.println("1-Press A if you want to see me driving from Point to other");
           System.out.println("2-Press B if you want to see me driving around the Obstacles");
@@ -300,8 +300,8 @@ public class PlayingField
     /**
      * Drawing the sign area with the obstacles and the Robot
      */
-     public void zeichnen(ArrayList<Rectangle> hindernisse , Point[] punkte){
-      canvas.zeichnen(hindernisse ,roboter, punkte);
+     public void draw(ArrayList<Rectangle> obstacles , Point[] points){
+      canvas.draw(obstacles ,robot, points);
     }
     
     /**
@@ -309,33 +309,33 @@ public class PlayingField
      * The Robot need not to search another way to go down
      * Positive x values extend to the right, positive y values to the bottom
      */
-    public void hindernisse_umfahren(ArrayList<Rectangle> obstacles){
+    public void avoidObstacles(ArrayList<Rectangle> obstacles){
      int dx = 0;
      int dy = 0;
      int step = 1;                     
-     roboter.reset();  // reset (Positon,Color) if we reenter
+     robot.reset();  // reset (Positon,Color) if we reenter
      boolean canMove = true;
       while (canMove) {
-          if(roboter.anWand(BREIT, LANG)){
+          if(robot.onWall(WIDE, LONG)){
              canMove = false;
-             roboter.setFarbe(Color.GREEN);   
+             robot.setColor(Color.GREEN);   
             }
             else { 
           dx = 0;
           dy = 0; 
-          if(roboter.canMoveRight(step,obstacles)){
+         if(robot.canMoveRight(step,obstacles)){
              dx = step; 
             }
-          if(roboter.canMoveDown(step,obstacles)){
+          if(robot.canMoveDown(step,obstacles)){
              dy = step; 
           }
           
           if(dx == 0 && dy == 0){
              canMove = false;
-             roboter.setFarbe(Color.RED);   // Change the Robot Color to red
+             robot.setColor(Color.RED);   // Change the Robot Color to red
           } 
            else {
-                roboter.bewegeUm(dx,dy);   // Moving the Robot at dx,dy
+                robot.moveAround(dx,dy);   // Moving the Robot at dx,dy
                 canvas.waite(10);        // Movement speed
             }
         }
@@ -346,11 +346,11 @@ public class PlayingField
     /**
      * The Robot will drive to the nearest Point
      */
-    public void punkte_umfahren(Point[] punkte){
-       roboter.reset();
-       zeichnen(null, punkte);    
-       for (Point punkt : punkte){
-           roboter.moveTo(punkt);
+    public void driveAroundPoints(Point[] points){
+       robot.reset();
+       draw(null, points);    
+       for (Point point : points){
+           robot.moveTo(point);
            canvas.waite(70);   //stay at Point for short Time
        }
    }

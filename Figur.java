@@ -11,23 +11,23 @@ public abstract class Figur
 {
     // instance variables - replace the example below with your own
    Point position;
-   Color farbe;
+   Color color;
 
    /**
     * Constructor for objects of class Figur
     */
-    public Figur(Point position,Color farbe)
+    public Figur(Point position,Color color)
     {
         // initialise instance variables
         this.position = position;
-        this.farbe = farbe;
+        this.color = color;
     }
 
    /**
     * Transfer the Methods from Class "Rechteck" to the Supercall Hier. So we can use it for the "Kreis Robot" to.
     */  
-   public Color getFarbe(){
-        return farbe;
+   public Color getColor(){
+        return color;
         }
      
    public Point getPosition(){
@@ -38,9 +38,9 @@ public abstract class Figur
      * the Color Error should be in every station so if we make an objekt from the constructor or set
      * the Color the program will be able to find the issue
      */   
-    public void setFarbe(Color farbe){
-     this.farbe = farbe;
-     if (farbe.equals(Color.white)){ 
+    public void setColor(Color color){
+     this.color = color;
+     if (color.equals(Color.white)){ 
      System.out.println("Color cant't be White");
         }
      }
@@ -57,7 +57,7 @@ public abstract class Figur
     /**
      * changed the current position of a rectangle by dx and dy pixels
      */
-     public void bewegeUm(int dx, int dy){
+     public void moveAround(int dx, int dy){
      position.moveAround(dx,dy);
     }
     
@@ -65,7 +65,7 @@ public abstract class Figur
      * the position of the rectangle around the x and y values of the parameter
      * transferred shift vector changed
      */
-    public void bewegeUm(Point verschiebevektor){
+    public void moveAround(Point verschiebevektor){
     position.moveAround(verschiebevektor.getX(),verschiebevektor.getY());
     
     }    

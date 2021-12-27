@@ -11,10 +11,10 @@ public class Circle extends Figur
     /**
      * Constructor for objects of class Kreis
      */
-    public Circle(int d ,Color farbe)
+    public Circle(int d ,Color color)
     {
         // initialise instance variables
-        super(new Point(),farbe);
+        super(new Point(),color);
         this.d= d;
     }
     
@@ -39,10 +39,10 @@ public class Circle extends Figur
     }
     
     public int maxX(){
-    return PlayingField.BREIT-d;
+    return PlayingField.WIDE-d;
     }
     
     public int maxY(){
-    return PlayingField.LANG-d;
+    return PlayingField.LONG-d;
     }
 }

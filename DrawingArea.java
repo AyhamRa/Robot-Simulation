@@ -9,16 +9,16 @@ import java.awt.Graphics;
  public class DrawingArea extends JPanel{
        // Attribut declaration
        private ArrayList<Rectangle> obstacles;      
-       private Robot roboter;
-       private Point[] punkte;
+       private Robot robot;
+       private Point[] points;
        
        /**
         * Constructor for objects of class Zeichenflaeche
         */
-         public DrawingArea (ArrayList<Rectangle> obstacles, Robot roboter , Point[] punkte) {
+         public DrawingArea (ArrayList<Rectangle> obstacles, Robot robot , Point[] points) {
         this.obstacles = obstacles;
-        this.roboter = roboter;
-        this.punkte = punkte;
+        this.robot = robot;
+        this.points = points;
      }
     
      /**
@@ -29,17 +29,17 @@ import java.awt.Graphics;
        public void paintComponent(Graphics g){
           super.paintComponent(g);
           if ( obstacles != null) {
-           for (Rectangle rechteck : obstacles)  {
+           for (Rectangle rectangle : obstacles)  {
            // calling Methods from Rechteck
-           rechteck.zeichnen(g);
+           rectangle.draw(g);
           }
         }
        //@roboter how can i use the Object "Roboter" to call the Method for Class "Kreis"? because Class "Roboter is a SubClass from "Kreis"
-         roboter.zeichnen(g);
+         robot.draw(g);
        
          // Drawing the Points
-            if ( punkte != null){   
-           for (Point punkt: punkte){
+            if ( points != null){   
+           for (Point punkt: points){
             punkt.draw(g);
             }
          }

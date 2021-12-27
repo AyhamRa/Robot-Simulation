@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Circle
 comment0.text=\r\n\ Class\ "Kreis"\ is\ a\ subClass\ of\ the\ SuperCalss\ "Figur"\r\n\ This\ Class\ will\ contains\ the\ Attributes\ and\ Methods\ only\ for\ the\ Robot\r\n
-comment1.params=d\ farbe
+comment1.params=d\ color
 comment1.target=Circle(int,\ java.awt.Color)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Kreis\r\n
 comment2.params=
