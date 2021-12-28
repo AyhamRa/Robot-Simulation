@@ -12,7 +12,7 @@ public class Rectangle extends Figur
      private String description;
      
      /**
-     * Constructor for objects of class Rechteck
+     * Constructor for objects of class Rectangle
      */
      public Rectangle(){
         super(new Point(), Color.red);

@@ -40,6 +40,9 @@ public class Robot extends Circle
         KeyWord kw;
         System.out.println("Ask me a Question");
         Scanner scanner= new Scanner(System.in); // read the Input form the user
+        //PlayingField playField = new PlayingField();
+        //playField.randomNumber(0,1);
+        //String asnwer[] = {"Hey word", "Merhaba"};
          
          // The idea to use for Loop for End was from Internet but I have developed   
         for (String word = scanner.nextLine(); !word.toUpperCase().equals("END"); word = scanner.nextLine()) {
@@ -47,16 +50,16 @@ public class Robot extends Circle
           if ( word.toUpperCase().equals("END")  ){
                     break;
                     }
-          if (word.toUpperCase().contains("NAME") ){
+          if (word.toUpperCase().contains("NAME") || word.toUpperCase().contains("CALL") ){
                   kw = KeyWord.NAME;
                 }     
-           else if (word.toUpperCase().contains("MANUFACTURER") || word.toUpperCase().contains("INVENTOR") ){ 
+           else if (word.toUpperCase().contains("MANUFACTURER") || word.toUpperCase().contains("INVENTOR") || word.toUpperCase().contains("CREATOR") || word.toUpperCase().contains("DEVELOPER") ){ 
                   kw = KeyWord.MANUFACTURER;
                     }
             else if (word.toUpperCase().contains("GENDER")){
                   kw = KeyWord.GENDER;
                        }
-             else if (word.toUpperCase().contains("BIRTHDAY") || word.toUpperCase().contains("OLD")){
+             else if (word.toUpperCase().contains("BIRTHDAY") || word.toUpperCase().contains("OLD") || word.toUpperCase().contains("AGE")){
                   kw = KeyWord.BIRTHDAY;
                        }
               else {
@@ -68,17 +71,17 @@ public class Robot extends Circle
                  System.out.println(" My name is kirito");
                  break;
               case MANUFACTURER:
-                System.out.println(" Well, my manufacturer is and he is more like my Dad.");
+                 System.out.println(" Well, my manufacturer is and he is more like my Dad.");
                  break;
               case GENDER:
-                System.out.println(" I am a Machine, a Machine have no Gender.Do you know otherwise?");  
+                 System.out.println(" I am a Machine, a Machine have no Gender.Do you know otherwise?");  
                  break;
               case BIRTHDAY:
-                System.out.println(" I am only 3 months old, so in Humans words i am still a Baby."); 
+                 System.out.println(" I am only 3 months old, so in Humans words i am still a Baby."); 
                  break;
               default: 
-                System.out.println("Sorry, I can't answer that.");
-                break;
+                 System.out.println("Sorry, I can't answer that.");
+                 break;
          }
             System.out.println("=====================================");
             System.out.println("Ask me another Question or Press End to Quit.");  

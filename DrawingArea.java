@@ -13,7 +13,7 @@ import java.awt.Graphics;
        private Point[] points;
        
        /**
-        * Constructor for objects of class Zeichenflaeche
+        * Constructor for objects of class DrawingArea
         */
          public DrawingArea (ArrayList<Rectangle> obstacles, Robot robot , Point[] points) {
         this.obstacles = obstacles;
@@ -39,8 +39,8 @@ import java.awt.Graphics;
        
          // Drawing the Points
             if ( points != null){   
-           for (Point punkt: points){
-            punkt.draw(g);
+           for (Point point: points){
+            point.draw(g);
             }
          }
       }

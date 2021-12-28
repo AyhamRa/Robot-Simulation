@@ -179,7 +179,7 @@ public class PlayingField
         
         // With the for loop we Generate the obstacles randomly until the Numbers of obstacles done.
         for (int i=0 ; i <obstackesCount ; i++){
-           Rectangle rectangle= new Rectangle(); // Produce an new object with type Rechteck
+           Rectangle rectangle= new Rectangle(); // Produce an new object with type Rectangle
                
               // check if there are 50 consecutive overlapping rectangles then break the loop and dont Generate anymore
            if (stop == 50){
@@ -195,25 +195,25 @@ public class PlayingField
                 
            Point poistion= new Point(x,y);   // declare the Position of each obstacles
            rectangle.setPosition(poistion);
-           int breite= randomNumber(1,100);
-           int laenge= randomNumber(1,100);  // Calling the Method int zufallszahl
-           rectangle.setWidth(breite);      // Calling the Method from Class Rechteck
-           rectangle.setLength(laenge);      // Why set Method because it will Generate Numbers thats mean a Change Method 
-           rectangle.setDescription("Rechteck " + i+1); // How many obstackes will be Produce
+           int width= randomNumber(1,100);
+           int length= randomNumber(1,100);  // Calling the Method int randomNumber
+           rectangle.setWidth(width);      // Calling the Method from Class Rectangle
+           rectangle.setLength(length);      // Why set Method because it will Generate Numbers thats mean a Change Method 
+           rectangle.setDescription("Rectangle " + i+1); // How many obstackes will be Produce
        
            // to Generate the obstacles only in the Range of the Play Field
-            if (x+breite > WIDE){
-             breite = WIDE - x;
+            if (x+width > WIDE){
+             width = WIDE - x;
             }
-            if (y+laenge > LONG){
-             laenge = LONG  - y;
+            if (y+length > LONG){
+             length = LONG  - y;
             }
       
-           Color color= randomColor();    // Calling the Method Color zufallszahl
+           Color color= randomColor();    // Calling the Method Color randomNumber
            rectangle.setColor(color);
            
-           //Calling the Method ueberlappt from Class Rechteck and let each Item in Arraylist to Check if overlapping or not
-           // Every obstacles is Storing in ArryList and he is a type Rechteck so i use it as Parmeters
+           //Calling the Method overlaps from Class Rectangle and let each Item in Arraylist to Check if overlapping or not
+           // Every obstacles is Storing in ArryList and his type a Rectangle so i use it as Parmeters
             boolean save = true;
             for (int j=0 ; j<obstacles.size() ; j++){
               
@@ -238,10 +238,10 @@ public class PlayingField
     /**
      * randomly Numbers will be Generate
      */
-     private int randomNumber(int von, int bis){
+     private int randomNumber(int from, int to){
        double randomNumbers = Math.random(); // Generate randomly Numbers between 0-0.99999
-       randomNumbers = randomNumbers*bis; // Change the Range of our Numbers Generator 0-bis
-       randomNumbers = randomNumbers+von; // Increase the Range of our Numbers Generator von-bis
+       randomNumbers = randomNumbers*to; // Change the Range of our Numbers Generator 0-to
+       randomNumbers = randomNumbers+from; // Increase the Range of our Numbers Generator from-to
        int rn = (int) randomNumbers; // Cast the number to an Integer
         return rn;
     }
@@ -261,7 +261,7 @@ public class PlayingField
     /**
      * Main Method, with it can the User a solving tasks writing until he/she Input "End".
      * A Main Method, its like a new class so However you find it in the "Spielfeld class", but you can't call the methodes without 
-     * declaring a new Object from class Speilfeld
+     * declaring a new Object from class PlayingField
      */
      public static void main(String[] args){
         
@@ -278,7 +278,7 @@ public class PlayingField
                     break;
                     }
             if (word.toUpperCase().equals("A")){
-               Point[] points = playField.EnterPoints(); // calling the Method punkteEingeben()
+               Point[] points = playField.EnterPoints(); // calling the Method EnterPoints()
                points = playField.poiSortieren(points);     // calling the Method poiSortiere()
                playField.driveAroundPoints(points);
             }
@@ -287,7 +287,7 @@ public class PlayingField
             playField.createObstacleList();
            }
             else if (word.toUpperCase().equals("C")){
-            playField.robot.speechRecognition();             // calling the Method spracherkennung()
+            playField.robot.speechRecognition();             // calling the Method speechRecognition()
                         }
           System.out.println("1-Press A if you want to see me driving from Point to other");
           System.out.println("2-Press B if you want to see me driving around the Obstacles");
@@ -300,7 +300,7 @@ public class PlayingField
     /**
      * Drawing the sign area with the obstacles and the Robot
      */
-     public void draw(ArrayList<Rectangle> obstacles , Point[] points){
+    public void draw(ArrayList<Rectangle> obstacles , Point[] points){
       canvas.draw(obstacles ,robot, points);
     }
     

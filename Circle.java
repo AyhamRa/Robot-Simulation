@@ -9,7 +9,7 @@ public class Circle extends Figur
     // instance variables
     int d;
     /**
-     * Constructor for objects of class Kreis
+     * Constructor for objects of class Circle
      */
     public Circle(int d ,Color color)
     {

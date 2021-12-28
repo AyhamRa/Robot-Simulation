@@ -13,7 +13,7 @@ public class Point
     private int y;
 
     /**
-     * Constructor for objects of class Punkt
+     * Constructor for objects of class Point
      */
     public Point()
     {

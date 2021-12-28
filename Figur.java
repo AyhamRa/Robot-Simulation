@@ -65,8 +65,8 @@ public abstract class Figur
      * the position of the rectangle around the x and y values of the parameter
      * transferred shift vector changed
      */
-    public void moveAround(Point verschiebevektor){
-    position.moveAround(verschiebevektor.getX(),verschiebevektor.getY());
+    public void moveAround(Point shiftVector){
+    position.moveAround(shiftVector.getX(),shiftVector.getY());
     
     }    
     
