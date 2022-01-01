@@ -47,7 +47,7 @@ public class Robot extends Circle
          // The idea to use for Loop for End was from Internet but I have developed   
         for (String word = scanner.nextLine(); !word.toUpperCase().equals("END"); word = scanner.nextLine()) {
  
-          if ( word.toUpperCase().equals("END")  ){
+          if (word.toUpperCase().equals("END")  ){
                     break;
                     }
           if (word.toUpperCase().contains("NAME") || word.toUpperCase().contains("CALL") ){
@@ -71,13 +71,13 @@ public class Robot extends Circle
                  System.out.println(" My name is kirito");
                  break;
               case MANUFACTURER:
-                 System.out.println(" Well, my manufacturer is and he is more like my Dad.");
+                 System.out.println("Well, my manufacturer is Ayham and he is more like my Dad.");
                  break;
               case GENDER:
-                 System.out.println(" I am a Machine, a Machine have no Gender.Do you know otherwise?");  
+                 System.out.println("I am a Machine, a Machine have no Gender.Do you know otherwise?");  
                  break;
               case BIRTHDAY:
-                 System.out.println(" I am only 3 months old, so in Humans words i am still a Baby."); 
+                 System.out.println("I am only 3 months old, so in Humans words i am still a Baby."); 
                  break;
               default: 
                  System.out.println("Sorry, I can't answer that.");
@@ -89,22 +89,22 @@ public class Robot extends Circle
         
     }
     
-     /**
-     * If the Robot at the Edge of our Panle then "return" true and "false" otherwise.
-     */
-      public boolean onWall(int WallX, int WallY){
+    /**
+    * If the Robot at the Edge of our Panle then "return" true and "false" otherwise.
+    */
+    public boolean onWall(int WallX, int WallY){
       if(getPosition().getX() >= WallX-getDiameter() || getPosition().getY() >= WallY-getDiameter()){
           return true;
         }
           else
              return false;
     }
-     /**
-      * Check if the Robot can move Right and return "false" if he can't and "true" if he can.
-      * @getPosition().getX() < rechteck.getPosition().getX() the Robot will check if he at left of the Obstcal, without it the Robot won't move straight
-      * @betweenObstcalsEdge_Y() is Down declare it 
-      */
-     public boolean canMoveRight(int step, ArrayList<Rectangle> obstacles){
+    /**
+     * Check if the Robot can move Right and return "false" if he can't and "true" if he can.
+     * @getPosition().getX() < rechteck.getPosition().getX() the Robot will check if he at left of the Obstcal, without it the Robot won't move straight
+     * @betweenObstcalsEdge_Y() is Down declare it 
+     */
+    public boolean canMoveRight(int step, ArrayList<Rectangle> obstacles){
        for (Rectangle rectangle : obstacles) {
          if (getPosition().getX()+getDiameter() + step > rectangle.getPosition().getX() && betweenObstcalsEdge_Y(rectangle) && getPosition().getX() < rectangle.getPosition().getX() ){
            return false;
@@ -112,6 +112,21 @@ public class Robot extends Circle
                
       }
       return true;
+    }
+    
+    /**
+     * Check if the Robot can move Right and return "false" if he can't and "true" if he can.
+     * @getPosition().getX() < rechteck.getPosition().getX() the Robot will check if he at left of the Obstcal, without it the Robot won't move straight
+     * @betweenObstcalsEdge_Y() is Down declare it 
+     */
+    public boolean canMoveLeft(int step, ArrayList<Rectangle> obstacles){
+       for (Rectangle rectangle : obstacles) {
+         if (getPosition().getX()+getDiameter() + step > rectangle.getPosition().getX() && betweenObstcalsEdge_Y(rectangle) && getPosition().getX() < rectangle.getPosition().getX() ){
+           return true;
+         }
+               
+      }
+      return false;
     }
 
     /**

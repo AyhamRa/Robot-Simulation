@@ -312,7 +312,7 @@ public class PlayingField
     public void avoidObstacles(ArrayList<Rectangle> obstacles){
      int dx = 0;
      int dy = 0;
-     int step = 1;                     
+     int step = 1; 
      robot.reset();  // reset (Positon,Color) if we reenter
      boolean canMove = true;
       while (canMove) {

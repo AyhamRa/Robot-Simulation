@@ -1,4 +1,3 @@
-
 import java.lang.Math;
 import java.awt.Graphics;
 import java.awt.Color;
